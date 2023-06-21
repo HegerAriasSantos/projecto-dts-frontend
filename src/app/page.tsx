@@ -63,7 +63,7 @@ export default function Home() {
       <div className="flex justify-center gap-4 items-center mt-8">
         <a href={urlTemplates}>Look templates</a>
 
-        <Link href="/home">Go to home (multiPage)</Link>
+        <Link href="/home">Go to changed (multiPage)</Link>
       </div>
     </main>
   );
