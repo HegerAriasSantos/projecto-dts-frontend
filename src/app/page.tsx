@@ -1,9 +1,11 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { Example } from "@/components";
 import { decrement, increment, reset } from "@/redux/features/counterSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { useGetUsersQuery } from "@/redux/services/userApi";
 import Link from "next/link";
+
 export default function Home() {
   const urlTemplates =
     "https://tailwindtemplates.co/templates/tags/startup?type=free";
