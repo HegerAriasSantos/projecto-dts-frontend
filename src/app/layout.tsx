@@ -1,6 +1,7 @@
 import "./globals.scss";
 import { Inter } from "next/font/google";
 import { Providers } from "@/redux/provider";
+import { Header, Footer } from "./components";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,8 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css"></link>
       <body suppressHydrationWarning={true} className={inter.className}>
+        <Header />
         <Providers>{children}</Providers>
+        <Footer />
       </body>
     </html>
   );
