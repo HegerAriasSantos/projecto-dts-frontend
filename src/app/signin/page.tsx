@@ -2,7 +2,6 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import "../globals.scss";
 import Link from 'next/link';
 
 export default function Page() {
