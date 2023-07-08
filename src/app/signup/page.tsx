@@ -11,14 +11,22 @@ export default function Page() {
     getValues,
     setValue,
     formState: { errors },
-  } = useForm<{ fullName: string; password: string }>({
+  } = useForm<{ firstName: string; lastName:string; email:string;  userName:string; phone:string; password: string; confirmPassword:string; }>({
     resolver: yupResolver(
       yup.object().shape({
-        fullName: yup.string().required("Please enter a user name").trim(),
+        firstName: yup.string().required("Please enter your first name").trim(),
+        lastName: yup.string().required("Please enter your last name.").trim(),
+        email: yup.string().required("Please enter your email.").email("Please enter a valid email address.").trim(),
+        userName: yup.string().required("Please enter a user name.").trim(),
+        phone: yup.string().required("Please enter your phone numbers").trim(),
         password: yup.string().required("Enter a correct password").trim(),
+        confirmPassword: yup.string().required("Please confirm your password.").oneOf([yup.ref("password"), null], "Passwords must match")
+        ///Aún debo hacer la parte de las labels *cries
+        ///recordatorio de dónde me quedé
+
       })
     ),
-    defaultValues: { fullName: "", password: "" },
+    defaultValues: { firstName: "", lastName: "", email: "", userName: "", phone: "", password: "", confirmPassword: ""  },
   });
 
   const onSubmit = () => {
@@ -38,24 +46,96 @@ export default function Page() {
               It’s totally free and super easy
             </p>
               <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="mb-8">
+                <div className="mb-8">           
                   <label 
-                    htmlFor="fullname"
+                    htmlFor="firstName"
                     className="mb-3 block text-sm font-medium text-dark dark:text-white"
                   >
-                    Full Name
+                    First Name
                   </label>
                   <input 
                     type="text" 
-                    placeholder="Enter your full name"
+                    placeholder="Enter your first name"
                     className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                     style={{ borderColor: "password" in errors ? "red" : "" }}
-                    {...register("fullName")} 
+                    {...register("firstName")} 
                   />
-                    {"fullName" in errors && (
-                      <p style={{ color: "red" }}>{errors.fullName?.message} </p>
+                    {"firstName" in errors && (
+                      <p style={{ color: "red" }}>{errors.firstName?.message} </p>
                     )}
                 </div>
+                <div className="mb-8"> 
+                  <label 
+                    htmlFor="lastName"
+                    className="mb-3 block text-sm font-medium text-dark dark:text-white"
+                  >
+                    Last Name
+                  </label>
+                  <input 
+                    type="text" 
+                    placeholder="Enter your last name"
+                    className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                    style={{ borderColor: "password" in errors ? "red" : "" }}
+                    {...register("lastName")} 
+                  />
+                    {"lastName" in errors && (
+                      <p style={{ color: "red" }}>{errors.lastName?.message} </p>
+                    )}
+                </div>    
+                <div className="mb-8">
+                  <label 
+                    htmlFor="email"
+                    className="mb-3 block text-sm font-medium text-dark dark:text-white"
+                  >
+                    Your Email
+                  </label>
+                  <input 
+                    type="text" 
+                    placeholder="Enter your email"
+                    className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                    style={{ borderColor: "password" in errors ? "red" : "" }}
+                    {...register("email")}
+                  />
+                    {"email" in errors && (
+                      <p style={{ color: "red" }}>{errors.email?.message} </p>
+                    )}
+                </div>
+                <div className="mb-8">
+                  <label 
+                    htmlFor= "userName"
+                    className="mb-3 block text-sm font-medium text-dark dark:text-white"
+                  >
+                    Your user-name
+                  </label>
+                  <input 
+                    type="text" 
+                    placeholder="Enter your  user name"
+                    className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                    style={{ borderColor: "password" in errors ? "red" : "" }}
+                    {...register(" userName")}
+                  />
+                    {"userName" in errors && (
+                      <p style={{ color: "red" }}>{errors.userName?.message} </p>
+                    )}
+                </div>
+                <div className="mb-8">
+                  <label 
+                    htmlFor="phone"
+                    className="mb-3 block text-sm font-medium text-dark dark:text-white"
+                  >
+                    Your phone number
+                  </label>
+                  <input 
+                    type="text" 
+                    placeholder="Enter your phone number"
+                    className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                    style={{ borderColor: "password" in errors ? "red" : "" }}
+                    {...register("phone")}
+                  />
+                    {"phone" in errors && (
+                      <p style={{ color: "red" }}>{errors.phone?.message} </p>
+                    )}
+                </div>                                               
                 <div className="mb-8">
                   <label 
                     htmlFor="password"
@@ -74,6 +154,24 @@ export default function Page() {
                       <p style={{ color: "red" }}>{errors.password?.message} </p>
                     )}
                 </div>
+                <div className="mb-8"> 
+                  <label 
+                    htmlFor="confirmPassword"
+                    className="mb-3 block text-sm font-medium text-dark dark:text-white"
+                  >
+                   Confirm Your Password
+                  </label>
+                  <input 
+                    type="password" 
+                    placeholder="Rewritte password"
+                    className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                    style={{ borderColor: "password" in errors ? "red" : "" }}
+                    {...register("confirmPasword")} 
+                  />
+                    {"confirmPasword" in errors && (
+                      <p style={{ color: "red" }}>{errors.confirmPassword?.message} </p>
+                    )}
+                </div>                   
                 <div className="mb-8 flex flex-col justify-between sm:flex-row sm:items-center">
                 </div>
                 <div className="mb-6">
