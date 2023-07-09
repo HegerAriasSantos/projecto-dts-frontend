@@ -3,27 +3,23 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Link from "next/link";
+import { emailMessage, requiredMessage } from "@/constants";
 
 export default function Page() {
   const {
     register,
     handleSubmit,
-    getValues,
-    setValue,
     formState: { errors },
   } = useForm<{ firstName: string; lastName:string; email:string;  userName:string; phone:string; password: string; confirmPassword:string; }>({
     resolver: yupResolver(
       yup.object().shape({
-        firstName: yup.string().required("Please enter your first name").trim(),
-        lastName: yup.string().required("Please enter your last name.").trim(),
-        email: yup.string().required("Please enter your email.").email("Please enter a valid email address.").trim(),
-        userName: yup.string().required("Please enter a user name.").trim(),
-        phone: yup.string().required("Please enter your phone numbers").trim(),
-        password: yup.string().required("Enter a correct password").trim(),
-        confirmPassword: yup.string().required("Please confirm your password.").oneOf([yup.ref("password"), null], "Passwords must match")
-        ///Aún debo hacer la parte de las labels *cries
-        ///recordatorio de dónde me quedé
-
+        firstName: yup.string().required(requiredMessage).trim(),
+        lastName: yup.string().required(requiredMessage).trim(),
+        email: yup.string().required(requiredMessage).email(emailMessage).trim(),
+        userName: yup.string().required(requiredMessage).trim(),
+        phone: yup.string().required(requiredMessage).trim(),
+        password: yup.string().required(requiredMessage).trim(),
+        confirmPassword: yup.string().required(requiredMessage).oneOf([yup.ref("password"), null], "Passwords must match")
       })
     ),
     defaultValues: { firstName: "", lastName: "", email: "", userName: "", phone: "", password: "", confirmPassword: ""  },
@@ -40,7 +36,7 @@ export default function Page() {
           <div className="w-full px-4">
             <div className="mx-auto max-w-[500px] rounded-md bg-primary bg-opacity-5 py-10 px-6 dark:bg-dark sm:p-[60px]">
             <h3 className="mb-3 text-center text-2xl font-bold text-black dark:text-white sm:text-3xl">
-              Create your account
+              Create account
             </h3>
             <p className="mb-11 text-center text-base font-medium text-body-color">
               It’s totally free and super easy
@@ -55,7 +51,7 @@ export default function Page() {
                   </label>
                   <input 
                     type="text" 
-                    placeholder="Enter your first name"
+                    placeholder="First Name"
                     className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                     style={{ borderColor: "password" in errors ? "red" : "" }}
                     {...register("firstName")} 
@@ -73,7 +69,7 @@ export default function Page() {
                   </label>
                   <input 
                     type="text" 
-                    placeholder="Enter your last name"
+                    placeholder="Last Name"
                     className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                     style={{ borderColor: "password" in errors ? "red" : "" }}
                     {...register("lastName")} 
@@ -87,11 +83,11 @@ export default function Page() {
                     htmlFor="email"
                     className="mb-3 block text-sm font-medium text-dark dark:text-white"
                   >
-                    Your Email
+                    Email
                   </label>
                   <input 
-                    type="text" 
-                    placeholder="Enter your email"
+                    type="email" 
+                    placeholder="Email"
                     className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                     style={{ borderColor: "password" in errors ? "red" : "" }}
                     {...register("email")}
@@ -105,14 +101,14 @@ export default function Page() {
                     htmlFor= "userName"
                     className="mb-3 block text-sm font-medium text-dark dark:text-white"
                   >
-                    Your user-name
+                    Username
                   </label>
                   <input 
                     type="text" 
-                    placeholder="Enter your  user name"
+                    placeholder="Username"
                     className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                     style={{ borderColor: "password" in errors ? "red" : "" }}
-                    {...register(" userName")}
+                    {...register("userName")}
                   />
                     {"userName" in errors && (
                       <p style={{ color: "red" }}>{errors.userName?.message} </p>
@@ -123,11 +119,11 @@ export default function Page() {
                     htmlFor="phone"
                     className="mb-3 block text-sm font-medium text-dark dark:text-white"
                   >
-                    Your phone number
+                    Phone Number
                   </label>
                   <input 
                     type="text" 
-                    placeholder="Enter your phone number"
+                    placeholder="Phone Number"
                     className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                     style={{ borderColor: "password" in errors ? "red" : "" }}
                     {...register("phone")}
@@ -141,11 +137,11 @@ export default function Page() {
                     htmlFor="password"
                     className="mb-3 block text-sm font-medium text-dark dark:text-white"
                   >
-                    Your Password
+                    Password
                   </label>
                   <input 
                     type="password" 
-                    placeholder="Enter your Password"
+                    placeholder="Password"
                     className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                     style={{ borderColor: "password" in errors ? "red" : "" }}
                     {...register("password")}
@@ -159,16 +155,16 @@ export default function Page() {
                     htmlFor="confirmPassword"
                     className="mb-3 block text-sm font-medium text-dark dark:text-white"
                   >
-                   Confirm Your Password
+                   Confirm Password
                   </label>
                   <input 
                     type="password" 
                     placeholder="Rewritte password"
                     className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                     style={{ borderColor: "password" in errors ? "red" : "" }}
-                    {...register("confirmPasword")} 
+                    {...register("confirmPassword")} 
                   />
-                    {"confirmPasword" in errors && (
+                    {"confirmPassword" in errors && (
                       <p style={{ color: "red" }}>{errors.confirmPassword?.message} </p>
                     )}
                 </div>                   
@@ -181,7 +177,7 @@ export default function Page() {
                 </div>
               </form>
               <p className="text-center text-base font-medium text-body-color">
-                Already using Startup?
+                Already using Startup? {" "}
                 <Link href="/signin" className="text-primary hover:underline">
                   Sign in
                 </Link>

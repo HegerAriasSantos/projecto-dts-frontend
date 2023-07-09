@@ -7,6 +7,7 @@
       "@types/*": ["./src/types/*"],
       "@utils/*": ["./src/utils/*"],
       "@components/*": ["./src/components/*"],
+      "@constans/*": ["./src/constans/*"],
     },
     "allowJs": true,
     "skipLibCheck": true,

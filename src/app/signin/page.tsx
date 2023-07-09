@@ -3,19 +3,18 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Link from 'next/link';
+import { requiredMessage } from "@/constants";
 
 export default function Page() {
   const {
     register,
     handleSubmit,
-    getValues,
-    setValue,
     formState: { errors },
   } = useForm<{ userName: string; password: string }>({
     resolver: yupResolver(
       yup.object().shape({
-        userName: yup.string().required("Please enter a user name.").trim(),
-        password: yup.string().required("Enter a correct password.").trim(),
+        userName: yup.string().required(requiredMessage).trim(),
+        password: yup.string().required(requiredMessage).trim(),
       })
     ),
     defaultValues: { userName: "", password: "" },
@@ -43,11 +42,11 @@ export default function Page() {
                     htmlFor="username"
                     className="mb-3 block text-sm font-medium text-dark dark:text-white"
                   >
-                    Your User Name
+                   Username 
                   </label>
                   <input 
                     type="text" 
-                    placeholder="Enter your user name"
+                    placeholder="Username"
                     className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                     style={{ borderColor: "password" in errors ? "red" : "" }}
                     {...register("userName")} 
@@ -61,11 +60,11 @@ export default function Page() {
                     htmlFor="password"
                     className="mb-3 block text-sm font-medium text-dark dark:text-white"
                   >
-                    Your Password
+                    Password
                   </label>
                   <input 
                     type="password" 
-                    placeholder="Enter your Password"
+                    placeholder="Password"
                     className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                     style={{ borderColor: "password" in errors ? "red" : "" }}
                     {...register("password")}
@@ -97,8 +96,8 @@ export default function Page() {
                           >
                             <path
                               d="M10.0915 0.951972L10.0867 0.946075L10.0813 0.940568C9.90076 0.753564 9.61034 0.753146 9.42927 0.939309L4.16201 6.22962L1.58507 3.63469C1.40401 3.44841 1.11351 3.44879 0.932892 3.63584C0.755703 3.81933 0.755703 4.10875 0.932892 4.29224L0.932878 4.29225L0.934851 4.29424L3.58046 6.95832C3.73676 7.11955 3.94983 7.2 4.1473 7.2C4.36196 7.2 4.55963 7.11773 4.71406 6.9584L10.0468 1.60234C10.2436 1.4199 10.2421 1.1339 10.0915 0.951972ZM4.2327 6.30081L4.2317 6.2998C4.23206 6.30015 4.23237 6.30049 4.23269 6.30082L4.2327 6.30081Z"
-                              fill="#3056D3"
-                              stroke="#3056D3"
+                              fill="#13C296"
+                              stroke="#13C296"
                               strokeWidth="0.4"
                             />
                           </svg>
@@ -124,7 +123,7 @@ export default function Page() {
                 </div>
               </form>
               <p className="text-center text-base font-medium text-body-color">
-                Don’t you have an account?
+                Don’t you have an account? {" "}
                 <Link href="/signup" className="text-primary hover:underline">
                   Sign up
                 </Link>
@@ -150,7 +149,7 @@ export default function Page() {
               width="1440"
               height="969"
             >
-              <rect width="1440" height="969" fill="#090E34" />
+              <rect width="1440" height="969" fill="#13C296" />
             </mask>
             <g mask="url(#mask0_95:1005)">
               <path
@@ -173,8 +172,8 @@ export default function Page() {
                 y2="453.581"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stopColor="#4A6CF7" />
-                <stop offset="1" stopColor="#4A6CF7" stopOpacity="0" />
+                <stop stopColor="#13C296" />
+                <stop offset="1" stopColor="#13C296" stopOpacity="0" />
               </linearGradient>
               <linearGradient
                 id="paint1_linear_95:1005"
@@ -184,8 +183,8 @@ export default function Page() {
                 y2="1192.04"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stopColor="#4A6CF7" />
-                <stop offset="1" stopColor="#4A6CF7" stopOpacity="0" />
+                <stop stopColor="#13C296" />
+                <stop offset="1" stopColor="#13C296" stopOpacity="0" />
               </linearGradient>
             </defs>
           </svg>
