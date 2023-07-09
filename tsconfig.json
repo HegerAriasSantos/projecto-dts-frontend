@@ -7,7 +7,7 @@
       "@types/*": ["./src/types/*"],
       "@utils/*": ["./src/utils/*"],
       "@components/*": ["./src/components/*"],
-      "@constans/*": ["./src/constans/*"],
+      "@constans/*": ["./src/constans/*"]
     },
     "allowJs": true,
     "skipLibCheck": true,
@@ -30,4 +30,3 @@
   "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }
-
