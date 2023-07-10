@@ -1,16 +1,14 @@
 import counterReducer from "./features/counterSlice";
+import tokenReducer from "./features/tokenSlice";
 import { configureStore } from "@reduxjs/toolkit";
-import { userService } from "./services/userService";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
 
 export const store = configureStore({
   reducer: {
     counterReducer,
-    [userService.reducerPath]: userService.reducer,
+    tokenReducer
   },
   devTools: process.env.NODE_ENV !== "production",
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({}).concat([userService.middleware]),
 });
 
 setupListeners(store.dispatch);
