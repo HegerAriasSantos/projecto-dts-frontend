@@ -8,9 +8,9 @@ import { UserSignupRequest } from "@/types";
 import { UserService } from "@/services";
 import { useAppDispatch } from "@/redux/hooks";
 import { setToken } from "@/redux/features/tokenSlice";
-import { useRouter } from 'next/navigation';
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 export default function Page() {
   const {
@@ -22,46 +22,66 @@ export default function Page() {
       yup.object().shape({
         firstName: yup.string().required(requiredMessage).trim(),
         lastName: yup.string().required(requiredMessage).trim(),
-        email: yup.string().required(requiredMessage).email(emailMessage).trim(),
+        email: yup
+          .string()
+          .required(requiredMessage)
+          .email(emailMessage)
+          .trim(),
         userName: yup.string().required(requiredMessage).trim(),
         phone: yup.string().required(requiredMessage).trim(),
-        password: yup.string().required(requiredMessage).matches(
-          new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})"),
-          "Must Contain 6 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
-        ).trim(),
-        confirmPassword: yup.string().required(requiredMessage).oneOf([yup.ref("password"), null], "Passwords must match")
+        password: yup
+          .string()
+          .required(requiredMessage)
+          .matches(
+            new RegExp(
+              "^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})"
+            ),
+            "Must Contain 6 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+          )
+          .trim(),
+        confirmPassword: yup
+          .string()
+          .required(requiredMessage)
+          .oneOf([yup.ref("password"), null], "Passwords must match"),
       })
     ),
-    defaultValues: { firstName: "", lastName: "", email: "", userName: "", phone: "", password: "", confirmPassword: "" },
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      userName: "",
+      phone: "",
+      password: "",
+      confirmPassword: "",
+    },
   });
 
-  const MySwal = withReactContent(Swal)
+  const MySwal = withReactContent(Swal);
   const { push } = useRouter();
   const dispatch = useAppDispatch();
 
   const onSubmit = async (user: UserSignupRequest) => {
-    const result = await UserService.signup(user)
-    if (result.hasError) return alert(result.error)
+    const result = await UserService.signup(user);
+    if (result.hasError) return alert(result.error);
     const userResponse = await UserService.signin({
       email: user.email,
-      password: user.password
-    })
+      password: user.password,
+    });
     MySwal.fire({
       title: "Thank you for signing up!",
-      icon: "success"
+      icon: "success",
     }).then(() => {
-      dispatch(setToken(userResponse.jwToken))
-      push("/")
-    })
+      dispatch(setToken(userResponse.jwToken));
+      push("/");
+    });
   };
 
   return (
-    <section className="relative z-10 overflow-hidden pt-36 pb-16 md:pb-20 lg:pt-[180px] lg:pb-28">
-      <div
-        className="container">
+    <section className="relative z-10 overflow-hidden pb-16 pt-36 md:pb-20 lg:pb-28 lg:pt-[180px]">
+      <div className="container">
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4">
-            <div className="mx-auto max-w-[500px] rounded-md bg-primary bg-opacity-5 py-10 px-6 dark:bg-dark sm:p-[60px]">
+            <div className="mx-auto max-w-[500px] rounded-md bg-primary bg-opacity-5 px-6 py-10 dark:bg-dark sm:p-[60px]">
               <h3 className="mb-3 text-center text-2xl font-bold text-black dark:text-white sm:text-3xl">
                 Create account
               </h3>
@@ -79,7 +99,7 @@ export default function Page() {
                   <input
                     type="text"
                     placeholder="First Name"
-                    className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                    className="w-full rounded-md border border-transparent px-6 py-3 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                     style={{ borderColor: "firstName" in errors ? "red" : "" }}
                     {...register("firstName")}
                   />
@@ -97,7 +117,7 @@ export default function Page() {
                   <input
                     type="text"
                     placeholder="Last Name"
-                    className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                    className="w-full rounded-md border border-transparent px-6 py-3 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                     style={{ borderColor: "lastName" in errors ? "red" : "" }}
                     {...register("lastName")}
                   />
@@ -115,7 +135,7 @@ export default function Page() {
                   <input
                     type="email"
                     placeholder="Email"
-                    className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                    className="w-full rounded-md border border-transparent px-6 py-3 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                     style={{ borderColor: "email" in errors ? "red" : "" }}
                     {...register("email")}
                   />
@@ -133,7 +153,7 @@ export default function Page() {
                   <input
                     type="text"
                     placeholder="Username"
-                    className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                    className="w-full rounded-md border border-transparent px-6 py-3 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                     style={{ borderColor: "userName" in errors ? "red" : "" }}
                     {...register("userName")}
                   />
@@ -151,7 +171,7 @@ export default function Page() {
                   <input
                     type="text"
                     placeholder="Phone Number"
-                    className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                    className="w-full rounded-md border border-transparent px-6 py-3 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                     style={{ borderColor: "phone" in errors ? "red" : "" }}
                     {...register("phone")}
                   />
@@ -169,7 +189,7 @@ export default function Page() {
                   <input
                     type="text"
                     placeholder="Password"
-                    className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                    className="w-full rounded-md border border-transparent px-6 py-3 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                     style={{ borderColor: "password" in errors ? "red" : "" }}
                     {...register("password")}
                   />
@@ -187,24 +207,30 @@ export default function Page() {
                   <input
                     type="password"
                     placeholder="Rewritte password"
-                    className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
-                    style={{ borderColor: "confirmPassword" in errors ? "red" : "" }}
+                    className="w-full rounded-md border border-transparent px-6 py-3 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                    style={{
+                      borderColor: "confirmPassword" in errors ? "red" : "",
+                    }}
                     {...register("confirmPassword")}
                   />
                   {"confirmPassword" in errors && (
-                    <p style={{ color: "red" }}>{errors.confirmPassword?.message} </p>
+                    <p style={{ color: "red" }}>
+                      {errors.confirmPassword?.message}{" "}
+                    </p>
                   )}
                 </div>
-                <div className="mb-8 flex flex-col justify-between sm:flex-row sm:items-center">
-                </div>
+                <div className="mb-8 flex flex-col justify-between sm:flex-row sm:items-center"></div>
                 <div className="mb-6">
-                  <button type="submit" className="flex w-full items-center justify-center rounded-md bg-primary py-4 px-9 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp">
+                  <button
+                    type="submit"
+                    className="flex w-full items-center justify-center rounded-md bg-primary px-9 py-4 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp"
+                  >
                     Sign up
                   </button>
                 </div>
               </form>
               <p className="text-center text-base font-medium text-body-color">
-                Already using Startup? {" "}
+                Already using Startup?{" "}
                 <Link href="/signin" className="text-primary hover:underline">
                   Sign in
                 </Link>
@@ -213,7 +239,7 @@ export default function Page() {
           </div>
         </div>
       </div>
-      <div className="absolute top-0 left-0 z-[-1]">
+      <div className="absolute left-0 top-0 z-[-1]">
         <svg
           width="1440"
           height="969"
