@@ -10,27 +10,26 @@ const Footer = () => {
       >
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
-            <div className="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-5/12">
-              <div className="mb-12 max-w-[360px] lg:mb-16">
+            <div className="w-full px-10 md:w-1/2 lg:w-4/12 xl:w-5/12">
+              <div className="mb-1 max-w-[360px] lg:mb-1">
                 <Link href="/" className="mb-8 inline-block">
                   <Image
-                    src="images/logo/logo-2.svg"
+                    src="/images/logo/greenLife_logo.png"
                     alt="logo"
                     className="w-full dark:hidden"
-                    width={140}
+                    width={100}
                     height={30}
                   />
                   <Image
-                    src="images/logo/logo.svg"
+                    src="/images/logo/greenLife_logo.png"
                     alt="logo"
                     className="hidden w-full dark:block"
-                    width={140}
+                    width={100}
                     height={30}
                   />
                 </Link>
-                <p className="mb-9 text-base font-medium leading-relaxed text-body-color">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer lobortis.
+                <p className="mb-7 text-base font-medium leading-relaxed text-body-color">
+                  Green Life is a universal resource that helps you find your own shade of green.
                 </p>
                 {/* <div className="flex items-center">
                   <a
@@ -158,10 +157,7 @@ const Footer = () => {
         <div className="bg-primary/10 py-8">
           <div className="container">
             <p className="text-center text-base text-body-color dark:text-white">
-              Template by UIdeck and{" "}
-              <a href="https://nextjstemplates.com" rel="nofollow noopener">
-                Next.js Templates
-              </a>
+              Copyright © 2023 Jimyajah. All rights reserved.
             </p>
           </div>
         </div>
