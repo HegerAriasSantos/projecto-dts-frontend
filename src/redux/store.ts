@@ -1,16 +1,14 @@
 import counterReducer from "./features/counterSlice";
+import tokenReducer from "./features/tokenSlice";
 import { configureStore } from "@reduxjs/toolkit";
-import { userApi } from "./services/userApi";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
 
 export const store = configureStore({
   reducer: {
     counterReducer,
-    [userApi.reducerPath]: userApi.reducer,
+    tokenReducer
   },
   devTools: process.env.NODE_ENV !== "production",
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({}).concat([userApi.middleware]),
 });
 
 setupListeners(store.dispatch);
