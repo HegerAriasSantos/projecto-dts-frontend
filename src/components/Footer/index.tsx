@@ -32,7 +32,7 @@ const Footer = () => {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Integer lobortis.
                 </p>
-                <div className="flex items-center">
+                {/* <div className="flex items-center">
                   <a
                     href="/"
                     aria-label="social-link"
@@ -89,42 +89,32 @@ const Footer = () => {
                       <path d="M15.2196 0H1.99991C1.37516 0 0.875366 0.497491 0.875366 1.11936V14.3029C0.875366 14.8999 1.37516 15.4222 1.99991 15.4222H15.1696C15.7943 15.4222 16.2941 14.9247 16.2941 14.3029V1.09448C16.3441 0.497491 15.8443 0 15.2196 0ZM5.44852 13.1089H3.17444V5.7709H5.44852V13.1089ZM4.29899 4.75104C3.54929 4.75104 2.97452 4.15405 2.97452 3.43269C2.97452 2.71133 3.57428 2.11434 4.29899 2.11434C5.02369 2.11434 5.62345 2.71133 5.62345 3.43269C5.62345 4.15405 5.07367 4.75104 4.29899 4.75104ZM14.07 13.1089H11.796V9.55183C11.796 8.7061 11.771 7.58674 10.5964 7.58674C9.39693 7.58674 9.222 8.53198 9.222 9.47721V13.1089H6.94792V5.7709H9.17202V6.79076H9.19701C9.52188 6.19377 10.2466 5.59678 11.3711 5.59678C13.6952 5.59678 14.12 7.08925 14.12 9.12897V13.1089H14.07Z" />
                     </svg>
                   </a>
-                </div>
+                </div> */}
               </div>
             </div>
 
             <div className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12">
               <div className="mb-12 lg:mb-16">
                 <h2 className="mb-10 text-xl font-bold text-black dark:text-white">
-                  Useful Links
+                  About Us
                 </h2>
                 <ul>
                   <li>
-                    <a
+                    <Link
                       href="/"
                       className="mb-4 inline-block text-base font-medium text-body-color hover:text-primary"
                     >
-                      {" "}
-                      Blog{" "}
-                    </a>
+                      Home
+                    </Link>
                   </li>
+
                   <li>
-                    <a
-                      href="/"
+                    <Link
+                      href="/about"
                       className="mb-4 inline-block text-base font-medium text-body-color hover:text-primary"
                     >
-                      {" "}
-                      Pricing{" "}
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/"
-                      className="mb-4 inline-block text-base font-medium text-body-color hover:text-primary"
-                    >
-                      {" "}
-                      About{" "}
-                    </a>
+                      About
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -133,72 +123,32 @@ const Footer = () => {
             <div className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12">
               <div className="mb-12 lg:mb-16">
                 <h2 className="mb-10 text-xl font-bold text-black dark:text-white">
-                  Terms
+                  Features
                 </h2>
                 <ul>
                   <li>
-                    <a
-                      href="/"
+                    <Link
+                      href="/cfc"
                       className="mb-4 inline-block text-base font-medium text-body-color hover:text-primary"
                     >
-                      {" "}
-                      TOS{" "}
-                    </a>
+                      CFC
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="/"
+                    <Link
+                      href="/tips"
                       className="mb-4 inline-block text-base font-medium text-body-color hover:text-primary"
                     >
-                      {" "}
-                      Privacy Policy{" "}
-                    </a>
+                      Tips
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="/"
+                    <Link
+                      href="/blog"
                       className="mb-4 inline-block text-base font-medium text-body-color hover:text-primary"
                     >
-                      {" "}
-                      Refund Policy{" "}
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-3/12">
-              <div className="mb-12 lg:mb-16">
-                <h2 className="mb-10 text-xl font-bold text-black dark:text-white">
-                  Support & Help
-                </h2>
-                <ul>
-                  <li>
-                    <a
-                      href="/"
-                      className="mb-4 inline-block text-base font-medium text-body-color hover:text-primary"
-                    >
-                      {" "}
-                      Open Support Ticket{" "}
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/"
-                      className="mb-4 inline-block text-base font-medium text-body-color hover:text-primary"
-                    >
-                      {" "}
-                      Terms of Use{" "}
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/"
-                      className="mb-4 inline-block text-base font-medium text-body-color hover:text-primary"
-                    >
-                      {" "}
-                      About{" "}
-                    </a>
+                      Blogs
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -208,7 +158,10 @@ const Footer = () => {
         <div className="bg-primary/10 py-8">
           <div className="container">
             <p className="text-center text-base text-body-color dark:text-white">
-              Template by UIdeck and <a href="https://nextjstemplates.com" rel="nofollow noopener">Next.js Templates</a>
+              Template by UIdeck and{" "}
+              <a href="https://nextjstemplates.com" rel="nofollow noopener">
+                Next.js Templates
+              </a>
             </p>
           </div>
         </div>
@@ -286,7 +239,7 @@ const Footer = () => {
             </defs>
           </svg>
         </div>
-        <div className="absolute left-0 bottom-24 z-[-1]">
+        <div className="absolute bottom-24 left-0 z-[-1]">
           <svg
             width="79"
             height="94"
