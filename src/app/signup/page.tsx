@@ -5,12 +5,13 @@ import * as yup from "yup";
 import Link from "next/link";
 import { emailMessage, requiredMessage } from "@/constants";
 import { UserSignupRequest } from "@/types";
-import { UserService } from "@/services";
 import { useAppDispatch } from "@/redux/hooks";
 import { setToken } from "@/redux/features/tokenSlice";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { useState } from "react";
+import { UserService } from "../../services/userService";
 
 export default function Page() {
   const {
@@ -29,16 +30,7 @@ export default function Page() {
           .trim(),
         userName: yup.string().required(requiredMessage).trim(),
         phone: yup.string().required(requiredMessage).trim(),
-        password: yup
-          .string()
-          .required(requiredMessage)
-          .matches(
-            new RegExp(
-              "^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})"
-            ),
-            "Must Contain 6 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
-          )
-          .trim(),
+        password: yup.string().required(requiredMessage).trim(),
         confirmPassword: yup
           .string()
           .required(requiredMessage)
@@ -56,24 +48,29 @@ export default function Page() {
     },
   });
 
+  const [passwordErrors, setPasswordErrors] = useState<string[]>([]);
   const MySwal = withReactContent(Swal);
   const { push } = useRouter();
   const dispatch = useAppDispatch();
 
   const onSubmit = async (user: UserSignupRequest) => {
     const result = await UserService.signup(user);
-    if (result.hasError) return alert(result.error);
-    const userResponse = await UserService.signin({
-      email: user.email,
-      password: user.password,
-    });
-    MySwal.fire({
-      title: "Thank you for signing up!",
-      icon: "success",
-    }).then(() => {
-      dispatch(setToken(userResponse.jwToken));
-      push("/");
-    });
+    if (!result.hasError) {
+      const singInResult = await UserService.signin(user);
+      MySwal.fire({
+        title: "Thank you for signing up!",
+        icon: "success",
+      }).then(() => {
+        dispatch(setToken(singInResult.jwToken));
+        push("/");
+      });
+    } else {
+      setPasswordErrors(
+        JSON.parse(result.error).map(
+          (error: { Code: string; Description: string }) => error.Description
+        )
+      );
+    }
   };
 
   return (
@@ -99,7 +96,7 @@ export default function Page() {
                   <input
                     type="text"
                     placeholder="First Name"
-                    className="w-full rounded-md border border-transparent px-6 py-3 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                    className="w-full rounded-md border border-transparent px-6 py-3 text-base text-black placeholder-black opacity-50 shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-primaryDark dark:text-white dark:placeholder-white dark:shadow-signUp"
                     style={{ borderColor: "firstName" in errors ? "red" : "" }}
                     {...register("firstName")}
                   />
@@ -117,7 +114,7 @@ export default function Page() {
                   <input
                     type="text"
                     placeholder="Last Name"
-                    className="w-full rounded-md border border-transparent px-6 py-3 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                    className="w-full rounded-md border border-transparent px-6 py-3 text-base text-black placeholder-black opacity-50 shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-primaryDark dark:text-white dark:placeholder-white dark:shadow-signUp"
                     style={{ borderColor: "lastName" in errors ? "red" : "" }}
                     {...register("lastName")}
                   />
@@ -135,7 +132,7 @@ export default function Page() {
                   <input
                     type="email"
                     placeholder="Email"
-                    className="w-full rounded-md border border-transparent px-6 py-3 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                    className="w-full rounded-md border border-transparent px-6 py-3 text-base text-black placeholder-black opacity-50 shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-primaryDark dark:text-white dark:placeholder-white dark:shadow-signUp"
                     style={{ borderColor: "email" in errors ? "red" : "" }}
                     {...register("email")}
                   />
@@ -153,7 +150,7 @@ export default function Page() {
                   <input
                     type="text"
                     placeholder="Username"
-                    className="w-full rounded-md border border-transparent px-6 py-3 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                    className="w-full rounded-md border border-transparent px-6 py-3 text-base text-black placeholder-black opacity-50 shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-primaryDark dark:text-white dark:placeholder-white dark:shadow-signUp"
                     style={{ borderColor: "userName" in errors ? "red" : "" }}
                     {...register("userName")}
                   />
@@ -171,7 +168,7 @@ export default function Page() {
                   <input
                     type="text"
                     placeholder="Phone Number"
-                    className="w-full rounded-md border border-transparent px-6 py-3 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                    className="w-full rounded-md border border-transparent px-6 py-3 text-base text-black placeholder-black opacity-50 shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-primaryDark dark:text-white dark:placeholder-white dark:shadow-signUp"
                     style={{ borderColor: "phone" in errors ? "red" : "" }}
                     {...register("phone")}
                   />
@@ -189,12 +186,19 @@ export default function Page() {
                   <input
                     type="text"
                     placeholder="Password"
-                    className="w-full rounded-md border border-transparent px-6 py-3 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                    className="w-full rounded-md border border-transparent px-6 py-3 text-base text-black placeholder-black opacity-50 shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-primaryDark dark:text-white dark:placeholder-white dark:shadow-signUp"
                     style={{ borderColor: "password" in errors ? "red" : "" }}
                     {...register("password")}
                   />
                   {"password" in errors && (
                     <p style={{ color: "red" }}>{errors.password?.message} </p>
+                  )}
+                  {!!passwordErrors.length && (
+                    <ul>
+                      {passwordErrors.map((message) => (
+                        <li style={{ color: "red" }}>{message}</li>
+                      ))}
+                    </ul>
                   )}
                 </div>
                 <div className="mb-8">
@@ -207,7 +211,7 @@ export default function Page() {
                   <input
                     type="password"
                     placeholder="Rewritte password"
-                    className="w-full rounded-md border border-transparent px-6 py-3 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                    className="w-full rounded-md border border-transparent px-6 py-3 text-base text-black placeholder-black opacity-50 shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-primaryDark dark:text-white dark:placeholder-white dark:shadow-signUp"
                     style={{
                       borderColor: "confirmPassword" in errors ? "red" : "",
                     }}
