@@ -18,6 +18,7 @@ module.exports = {
       black: "#212b36",
       dark: "#212b36",
       primary: "#13C296",
+      primaryDark: "#0e8f6e",
       yellow: "#FBB040",
       "body-color": "#637381",
     },
@@ -50,4 +51,3 @@ module.exports = {
   },
   plugins: [],
 };
-
