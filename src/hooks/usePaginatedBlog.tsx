@@ -10,10 +10,6 @@ export const usePaginatedBlog = () => {
 
   const getBlogs = async () => {
     const apiResponse = await blogService.getBlogs();
-    console.log(
-      "🚀 ~ file: usePaginatedBlog.tsx:13 ~ getBlogs ~ apiResponse:",
-      apiResponse
-    );
     const allBlogs = PaginatedUtils.transformToPaginated(apiResponse);
     allBlogs.hasNextPage = allBlogs.pages > page;
     allBlogs.hasBeforePage = page === 0;

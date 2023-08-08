@@ -70,14 +70,6 @@ const Footer = () => {
                   Features
                 </h2>
                 <ul>
-                  {/* <li>
-                    <Link
-                      href="/cfc"
-                      className="mb-4 inline-block text-base font-medium text-body-color hover:text-primary"
-                    >
-                      CFC
-                    </Link>
-                  </li> */}
                   <li>
                     <Link
                       href="/resources"
