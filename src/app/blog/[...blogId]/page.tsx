@@ -84,7 +84,7 @@ const BlogDetailsPage = ({ params }: { params: { blogId: string } }) => {
   };
   const handleDeleteComment = async (index: number) => {
     MySwal.fire({
-      title: "Are you sure you want to delete this comment?",
+      title: "¿Seguro que quieres borrar este comentario?",
       icon: "question",
       showCancelButton: true,
     }).then(async ({ isConfirmed }) => {
@@ -124,7 +124,7 @@ const BlogDetailsPage = ({ params }: { params: { blogId: string } }) => {
                       </div>
                       <div className="w-full">
                         <h4 className="mb-1 text-base font-medium text-body-color">
-                          By
+                          Por
                           <span>{` ${blogDetail?.user.name} ${blogDetail?.user.lastName}`}</span>
                         </h4>
                       </div>
@@ -161,7 +161,7 @@ const BlogDetailsPage = ({ params }: { params: { blogId: string } }) => {
               </div>
               <div className="mx-auto max-w-2xl">
                 <h3 className="mb-4 mt-12 text-xl font-bold leading-tight text-black dark:text-white ">
-                  Comments ({comments?.length})
+                  Comentarios ({comments?.length})
                 </h3>
                 <form className={`${!userInfo?.id && "hidden"} mb-8`}>
                   <textarea
@@ -176,7 +176,7 @@ const BlogDetailsPage = ({ params }: { params: { blogId: string } }) => {
                       className="flex h-9 min-w-[36px] cursor-pointer items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm font-semibold text-body-color transition hover:bg-primary hover:bg-opacity-100 hover:text-white"
                       onClick={() => createComment()}
                     >
-                      Post Comment
+                      Publicar comentario
                     </button>
                   </div>
                 </form>
@@ -203,7 +203,7 @@ const BlogDetailsPage = ({ params }: { params: { blogId: string } }) => {
                                 handleCancelUpdateComment(comment.id)
                               }
                             >
-                              Cancel
+                              Cancelar
                             </button>
                             <button
                               className="flex h-9 min-w-[36px] cursor-pointer items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-body-color transition hover:bg-primary hover:bg-opacity-100 hover:text-white"
@@ -211,7 +211,7 @@ const BlogDetailsPage = ({ params }: { params: { blogId: string } }) => {
                                 handleUpdateComment(comment.id, true)
                               }
                             >
-                              Update
+                              Actualizar
                             </button>
                           </div>
                         </div>
@@ -249,13 +249,13 @@ const BlogDetailsPage = ({ params }: { params: { blogId: string } }) => {
                                 handleUpdateComment(comment.id, false)
                               }
                             >
-                              Update
+                              Actualizar
                             </button>
                             <button
                               className="flex h-9 min-w-[36px] cursor-pointer items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-body-color transition hover:bg-primary hover:bg-opacity-100 hover:text-white"
                               onClick={() => handleDeleteComment(index)}
                             >
-                              Delete
+                              Eliminar
                             </button>
                           </div>
                         </div>
@@ -270,7 +270,7 @@ const BlogDetailsPage = ({ params }: { params: { blogId: string } }) => {
             <div className="w-full px-4 lg:w-4/12">
               <div className="mb-10 rounded-md bg-primary bg-opacity-5 dark:bg-opacity-10">
                 <h3 className="border-b border-body-color border-opacity-10 px-8 py-4 text-lg font-semibold text-black dark:border-white dark:border-opacity-10 dark:text-white">
-                  Related Blogs
+                  Blogs relacionados
                 </h3>
                 <ul className="p-8">
                   {blogs?.map((x) => (

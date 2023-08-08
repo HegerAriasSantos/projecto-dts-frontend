@@ -6,8 +6,8 @@ const AboutPage = () => {
   return (
     <>
       <Breadcrumb
-        pageName="About Page"
-        description="Welcome to GreenLife Where Nature and Community Thrive Together!"
+        pageName="Acerca de la página"
+        description="Bienvenido a GreenLife, donde la naturaleza y la comunidad prosperan juntas!"
       />
 
       <AboutSectionOne />

@@ -29,10 +29,10 @@ const Footer = () => {
                   />
                 </Link>
                 <p className="mb-9 mt-[-140px] text-base font-medium leading-relaxed text-body-color">
-                  Join our community today and be a part of the positive change
-                  our planet deserves. Together, let's create a greener,
-                  healthier future for generations to come. Thank you for being
-                  a part of GreenLife!
+                Únete hoy a nuestra comunidad y forma parte del cambio 
+                positivo que merece nuestro planeta. Juntos, creemos un 
+                futuro más verde, más verde y saludable para las 
+                generaciones venideras. Gracias por formar ¡parte de GreenLife!
                 </p>
               </div>
             </div>
@@ -40,7 +40,7 @@ const Footer = () => {
             <div className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12">
               <div className="mb-12 lg:mb-16">
                 <h2 className="mb-10 text-xl font-bold text-black dark:text-white">
-                  About Us
+                  Sobre nosotros
                 </h2>
                 <ul>
                   <li>
@@ -48,7 +48,7 @@ const Footer = () => {
                       href="/"
                       className="mb-4 inline-block text-base font-medium text-body-color hover:text-primary"
                     >
-                      Home
+                      Inicio
                     </Link>
                   </li>
 
@@ -57,7 +57,7 @@ const Footer = () => {
                       href="/about"
                       className="mb-4 inline-block text-base font-medium text-body-color hover:text-primary"
                     >
-                      About
+                      Acerca de
                     </Link>
                   </li>
                 </ul>
@@ -67,7 +67,7 @@ const Footer = () => {
             <div className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12">
               <div className="mb-12 lg:mb-16">
                 <h2 className="mb-10 text-xl font-bold text-black dark:text-white">
-                  Features
+                  Funciones
                 </h2>
                 <ul>
                   <li>
@@ -75,7 +75,7 @@ const Footer = () => {
                       href="/resources"
                       className="mb-4 inline-block text-base font-medium text-body-color hover:text-primary"
                     >
-                      Resources
+                      Recursos
                     </Link>
                   </li>
                   <li>

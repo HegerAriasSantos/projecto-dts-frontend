@@ -19,7 +19,7 @@ const LoginButtons = ({ userInfo, isInsideMenu, logout }: Props) => {
                 !isInsideMenu && "hidden"
               }  px-7 py-3 font-bold text-dark hover:opacity-70 dark:text-white lg:block lg:text-base`}
             >
-              Sign In
+              Iniciar sesión
             </Link>
             <Link
               href="/signup"
@@ -27,7 +27,7 @@ const LoginButtons = ({ userInfo, isInsideMenu, logout }: Props) => {
                 !isInsideMenu && "hidden lg:px-6"
               } rounded-md bg-primary px-2 py-3 font-bold text-white transition duration-300 hover:bg-opacity-90 hover:shadow-signUp  lg:block lg:px-6  lg:text-base xl:px-9`}
             >
-              Sign Up
+              Registrarse
             </Link>
           </>
         ) : (

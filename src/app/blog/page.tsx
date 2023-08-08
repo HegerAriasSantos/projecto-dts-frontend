@@ -11,7 +11,7 @@ const Blog = () => {
     <>
       <Breadcrumb
         pageName="Blogs"
-        description="Thank you for visiting our Blogs Page, and we hope you enjoy the immersive experience we have created for you. Happy reading!"
+        description="Gracias por visitar nuestra página de blogs, y esperamos que disfrute de la experiencia inmersiva que hemos creado para usted. ¡Feliz lectura!"
       />
 
       <section className="pb-[120px] pt-[120px]">
@@ -43,7 +43,7 @@ const Blog = () => {
                       "hover:bg-primary hover:bg-opacity-100 hover:text-white"
                     } `}
                   >
-                    Prev
+                    Anterior
                   </button>
                 </li>
                 {allBlogs?.pages ? (
@@ -84,7 +84,7 @@ const Blog = () => {
                       "hover:bg-primary hover:bg-opacity-100 hover:text-white"
                     } `}
                   >
-                    Next
+                    Siguiente
                   </button>
                 </li>
               </ul>

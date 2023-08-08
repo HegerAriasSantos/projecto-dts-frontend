@@ -15,22 +15,20 @@ const Hero = () => {
                 data-wow-delay=".2s"
               >
                 <h1 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
-                  Welcome to GreenLife Where Nature and Community Thrive
-                  Together!
+                  Bienvenido a GreenLife Donde la naturaleza y la comunidad prosperan ¡juntos!
                 </h1>
                 <p className="mb-12 text-base font-medium !leading-relaxed text-body-color dark:text-white dark:opacity-90 sm:text-lg md:text-xl">
-                  Join us in embracing a greener, more sustainable future!
-                  GreenLife is a vibrant community dedicated to preserving and
-                  nurturing our environment. We believe that by working
-                  together, we can create a harmonious balance between human
-                  development and nature's well-being.
+                  Únete a nosotros en la búsqueda de un futuro más verde y sostenible. 
+                  GreenLife es una vibrante comunidad dedicada a preservar y nuestro 
+                  medio ambiente. Creemos que trabajando juntos, podemos crear un equilibrio 
+                  armonioso entre el desarrollo humano y el bienestar de la naturaleza.
                 </p>
                 <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
                   <Link
                     href="/signup"
                     className="rounded-md bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
                   >
-                    Join now 🔥
+                    Únete ahora 🔥
                   </Link>
                 </div>
               </div>

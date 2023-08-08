@@ -46,10 +46,10 @@ const BlogDetailsPage = () => {
   useEffect(() => {
     if (!userInfo)
       MySwal.fire({
-        title: "Have to log in for create blog",
-        text: "Please log in",
+        title: "Tienes que iniciar sesión para crear un blog",
+        text: "Por favor inicie sesión",
         icon: "info",
-        confirmButtonText: "Go to login page",
+        confirmButtonText: "Ir a la página de sesión",
       }).then(() => push("/signup"));
   }, [userInfo]);
 
@@ -68,12 +68,12 @@ const BlogDetailsPage = () => {
     try {
       await blogService.createBlog(formData);
       MySwal.fire({
-        title: "Sign in succesfull!",
+        title: "¡Inicio de sesión exitoso!",
         icon: "success",
       }).then(() => push("/blog"));
     } catch (error) {
       MySwal.fire({
-        title: "Error, try later please",
+        title: "Error, inténtalo más tarde por favor",
         icon: "error",
       });
     }
@@ -85,7 +85,7 @@ const BlogDetailsPage = () => {
           <div className="w-full px-4">
             <div className="mx-auto rounded-md bg-primary bg-opacity-5 px-6 py-10 dark:bg-dark sm:p-[60px]">
               <h3 className="mb-3 text-center text-2xl font-bold text-black dark:text-white sm:text-3xl">
-                Create your own blog
+                Crea tu propio blog
               </h3>
 
               <form
@@ -97,11 +97,11 @@ const BlogDetailsPage = () => {
                     htmlFor="title"
                     className="mb-3 block text-sm font-medium text-dark dark:text-white"
                   >
-                    Title
+                    Título
                   </label>
                   <input
                     type="text"
-                    placeholder="title"
+                    placeholder="Título"
                     id="title"
                     className="w-full rounded-md border border-transparent px-6 py-3 text-base text-black placeholder-black opacity-50 shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-primaryDark dark:text-white dark:placeholder-white dark:shadow-signUp"
                     style={{
@@ -118,7 +118,7 @@ const BlogDetailsPage = () => {
                     htmlFor="category"
                     className="mb-3 block text-sm font-medium text-dark dark:text-white"
                   >
-                    Category
+                    Categoría
                   </label>
                   <select
                     id="category"
@@ -139,11 +139,11 @@ const BlogDetailsPage = () => {
                     htmlFor="Cover"
                     className="mb-3 block text-sm font-medium text-dark dark:text-white"
                   >
-                    Cover Image
+                    Imagen de portada
                   </label>
                   <input
                     type="file"
-                    placeholder="Cover"
+                    placeholder="Portada"
                     id="Cover"
                     className="w-full rounded-md border border-transparent px-6 py-3 text-base text-black placeholder-black opacity-50 shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-primaryDark dark:text-white dark:placeholder-white dark:shadow-signUp"
                     onChange={(e) => setFileImagen(e.target.files[0])}
@@ -151,7 +151,7 @@ const BlogDetailsPage = () => {
                 </div>
                 <div className="mb-8">
                   <label className="mb-3 block text-sm font-medium text-dark dark:text-white">
-                    Detail
+                    Detalle
                   </label>
                   <TinyEditor
                     value={editorText}
@@ -164,7 +164,7 @@ const BlogDetailsPage = () => {
                     type="submit"
                     className="flex w-full items-center justify-center rounded-md bg-primary px-9 py-4 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp"
                   >
-                    Create blog
+                    Crear blog
                   </button>
                 </div>
               </form>

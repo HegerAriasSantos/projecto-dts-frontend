@@ -9,8 +9,8 @@ const Blog = () => {
     <section id="blog" className="bg-primary/5 py-16 md:py-20 lg:py-28">
       <div className="container">
         <SectionTitle
-          title="Our Latest Blogs"
-          paragraph="Stay informed and inspired with our latest blog posts! Our team of passionate writers and eco-enthusiasts regularly shares valuable insights, tips, and stories related to the environment, sustainability, and community-driven initiatives. Explore the diverse topics covered in our blog and join the conversation."
+          title="Nuestros últimos blogs"
+          paragraph="Mantente informado e inspirado con las últimas entradas de nuestro blog. Nuestro equipo de escritores apasionados y entusiastas de la ecología comparte periódicamente valiosas ideas, consejos e historias relacionadas con el medio ambiente, la sostenibilidad y las iniciativas impulsadas por la comunidad. Explora los diversos temas tratados en nuestro blog y únete a la conversación."
           center
         />
 

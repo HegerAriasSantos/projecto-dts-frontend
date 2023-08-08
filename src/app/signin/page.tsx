@@ -35,7 +35,7 @@ export default function Page() {
     const result = await UserService.signin(user);
     if (!result.hasError) {
       MySwal.fire({
-        title: "Sign in succesfull!",
+        title: "¡Inicio de sesión con éxito!",
         icon: "success",
       }).then(() => {
         dispatch(setUserInfo({ token: result.jwToken, id: result.id }));
@@ -51,10 +51,10 @@ export default function Page() {
           <div className="w-full px-4">
             <div className="mx-auto max-w-[500px] rounded-md bg-primary bg-opacity-5 px-6 py-10 dark:bg-dark sm:p-[60px]">
               <h3 className="mb-3 text-center text-2xl font-bold text-black dark:text-white sm:text-3xl">
-                Sign in to your account
+                Acceda a su cuenta
               </h3>
               <p className="mb-11 text-center text-base font-medium text-body-color">
-                Login to your account for a faster checkout.
+                Inicie sesión en su cuenta para acceder a más recursos
               </p>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mb-8">
@@ -62,11 +62,11 @@ export default function Page() {
                     htmlFor="email"
                     className="mb-3 block text-sm font-medium text-dark dark:text-white"
                   >
-                    Email
+                    Correo
                   </label>
                   <input
                     type="text"
-                    placeholder="email"
+                    placeholder="Correo"
                     className="w-full rounded-md border border-transparent px-6 py-3 text-base text-black placeholder-black opacity-50 shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-primaryDark dark:text-white dark:placeholder-white dark:shadow-signUp"
                     style={{ borderColor: "password" in errors ? "red" : "" }}
                     {...register("email")}
@@ -80,11 +80,11 @@ export default function Page() {
                     htmlFor="password"
                     className="mb-3 block text-sm font-medium text-dark dark:text-white"
                   >
-                    Password
+                    Contraseña
                   </label>
                   <input
                     type="password"
-                    placeholder="Password"
+                    placeholder="Contraseña"
                     className="w-full rounded-md border border-transparent px-6 py-3 text-base text-black placeholder-black opacity-50 shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-primaryDark dark:text-white dark:placeholder-white dark:shadow-signUp"
                     style={{ borderColor: "password" in errors ? "red" : "" }}
                     {...register("password")}
@@ -124,7 +124,7 @@ export default function Page() {
                           </span>
                         </div>
                       </div>
-                      Keep me signed in
+                      Mantener sesión abierta
                     </label>
                   </div>
                   <div>
@@ -132,7 +132,7 @@ export default function Page() {
                       href="#0"
                       className="text-sm font-medium text-primary hover:underline"
                     >
-                      Forgot Password?
+                      ¿Olvidó su contraseña?
                     </a>
                   </div>
                 </div>
@@ -141,14 +141,14 @@ export default function Page() {
                     type="submit"
                     className="flex w-full items-center justify-center rounded-md bg-primary px-9 py-4 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp"
                   >
-                    Sign in
+                    Iniciar sesión
                   </button>
                 </div>
               </form>
               <p className="text-center text-base font-medium text-body-color">
-                Don’t you have an account?{" "}
+                ¿No tienes una cuenta?{" "}
                 <Link href="/signup" className="text-primary hover:underline">
-                  Sign up
+                  Registrarse
                 </Link>
               </p>
             </div>

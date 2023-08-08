@@ -23,8 +23,8 @@ const AboutSectionOne = () => {
           <div className="-mx-4 flex flex-wrap ">
             <div className="w-full px-4 lg:w-1/2">
               <SectionTitle
-                title="Our Vision"
-                paragraph="At GreenLife, our vision is to create a sustainable and thriving environment where people and nature coexist in harmony. We believe that by fostering a strong sense of environmental responsibility and community engagement, we can build a better future for generations to come."
+                title="Nuestra visión"
+                paragraph="En GreenLife, nuestra visión es crear un entorno sostenible y próspero en el que las personas y la naturaleza coexistan en armonía. Creemos que fomentando un fuerte sentido de la responsabilidad medioambiental y el compromiso con la comunidad, podemos construir un futuro mejor para las generaciones venideras."
                 mb="44px"
               />
 
@@ -33,18 +33,18 @@ const AboutSectionOne = () => {
                 data-wow-delay=".15s"
               >
                 <h3 className="mb-4 text-2xl font-bold !leading-tight text-black dark:text-white sm:text-3xl md:text-[38px]">
-                  Our Values
+                  Nuestros valores
                 </h3>
                 <div className="mx-[-12px] flex flex-wrap">
                   <div className="w-full px-3 sm:w-1/2 lg:w-full xl:w-1/2">
-                    <List text="Sustainability" />
-                    <List text="Community" />
-                    <List text="Empowerment" />
+                    <List text="Sostenibilidad" />
+                    <List text="Comunidad" />
+                    <List text="Capacitación" />
                   </div>
 
                   <div className="w-full px-3 sm:w-1/2 lg:w-full xl:w-1/2">
-                    <List text="Respect for Nature" />
-                    <List text="Accountability" />
+                    <List text="Respeto por la naturaleza" />
+                    <List text="Responsabilidad" />
                   </div>
                 </div>
               </div>
@@ -52,8 +52,8 @@ const AboutSectionOne = () => {
 
             <div className="w-full px-4 lg:w-1/2">
               <SectionTitle
-                title="Our Vision"
-                paragraph="At GreenLife, our vision is to create a sustainable and thriving environment where people and nature coexist in harmony. We believe that by fostering a strong sense of environmental responsibility and community engagement, we can build a better future for generations to come."
+                title="Nuestra visión"
+                paragraph="En GreenLife, nuestra visión es crear un entorno sostenible y próspero en el que las personas y la naturaleza coexistan en armonía. Creemos que fomentando un fuerte sentido de la responsabilidad medioambiental y el compromiso con la comunidad, podemos construir un futuro mejor para las generaciones venideras."
                 mb="44px"
               />
             </div>
