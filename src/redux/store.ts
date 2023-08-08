@@ -1,12 +1,12 @@
 import counterReducer from "./features/counterSlice";
-import tokenReducer from "./features/tokenSlice";
+import tokenReducer from "./features/userInfoSlice";
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
 
 export const store = configureStore({
   reducer: {
     counterReducer,
-    tokenReducer
+    tokenReducer,
   },
   devTools: process.env.NODE_ENV !== "production",
 });

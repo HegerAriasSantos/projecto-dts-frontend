@@ -6,7 +6,7 @@ import Link from "next/link";
 import { emailMessage, requiredMessage } from "@/constants";
 import { UserSignupRequest } from "@/types";
 import { useAppDispatch } from "@/redux/hooks";
-import { setToken } from "@/redux/features/tokenSlice";
+import { setUserInfo } from "@/redux/features/userInfoSlice";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -49,19 +49,36 @@ export default function Page() {
   });
 
   const [passwordErrors, setPasswordErrors] = useState<string[]>([]);
+  const [fileImagen, setFileImagen] = useState<File>();
   const MySwal = withReactContent(Swal);
   const { push } = useRouter();
   const dispatch = useAppDispatch();
 
   const onSubmit = async (user: UserSignupRequest) => {
-    const result = await UserService.signup(user);
+    const formForm = new FormData();
+    formForm.append("FirstName", user.firstName);
+    formForm.append("LastName", user.lastName);
+    formForm.append("Email", user.email);
+    formForm.append("UserName", user.userName);
+    formForm.append("Password", user.password);
+    formForm.append("ConfirmPassword", user.confirmPassword);
+    formForm.append("Phone", user.phone);
+    formForm.append("Photo", fileImagen.name);
+    formForm.append("FilePhoto", fileImagen);
+
+    const result = await UserService.signup(formForm);
     if (!result.hasError) {
       const singInResult = await UserService.signin(user);
       MySwal.fire({
         title: "Thank you for signing up!",
         icon: "success",
       }).then(() => {
-        dispatch(setToken(singInResult.jwToken));
+        dispatch(
+          setUserInfo({
+            token: singInResult.jwToken,
+            id: singInResult.id,
+          })
+        );
         push("/");
       });
     } else {
@@ -74,7 +91,7 @@ export default function Page() {
   };
 
   return (
-    <section className="relative z-10 overflow-hidden pb-16 pt-36 md:pb-20 lg:pb-28 lg:pt-[180px]">
+    <section className="relative z-10 overflow-hidden pb-16 pt-36 md:pb-20 lg:pb-28 ">
       <div className="container">
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4">
@@ -86,6 +103,21 @@ export default function Page() {
                 It’s totally free and super easy
               </p>
               <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="mb-8">
+                  <label
+                    htmlFor="Cover"
+                    className="mb-3 block text-sm font-medium text-dark dark:text-white"
+                  >
+                    Profile Picture
+                  </label>
+                  <input
+                    type="file"
+                    placeholder="Cover"
+                    id="Cover"
+                    className="w-full rounded-md border border-transparent px-6 py-3 text-base text-black placeholder-black opacity-50 shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-primaryDark dark:text-white dark:placeholder-white dark:shadow-signUp"
+                    onChange={(e) => setFileImagen(e.target.files[0])}
+                  />
+                </div>
                 <div className="mb-8">
                   <label
                     htmlFor="firstName"
@@ -184,7 +216,7 @@ export default function Page() {
                     Password
                   </label>
                   <input
-                    type="text"
+                    type="password"
                     placeholder="Password"
                     className="w-full rounded-md border border-transparent px-6 py-3 text-base text-black placeholder-black opacity-50 shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-primaryDark dark:text-white dark:placeholder-white dark:shadow-signUp"
                     style={{ borderColor: "password" in errors ? "red" : "" }}
@@ -234,7 +266,7 @@ export default function Page() {
                 </div>
               </form>
               <p className="text-center text-base font-medium text-body-color">
-                Already using Startup?{" "}
+                Already using GreenLife?
                 <Link href="/signin" className="text-primary hover:underline">
                   Sign in
                 </Link>

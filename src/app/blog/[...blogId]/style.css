@@ -1,0 +1,36 @@
+.htmlContainer * {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: currentColor;
+  font-family: "Inter", sans-serif;
+  line-height: 1.625;
+  font-size: 1.125rem;
+  color: rgb(99 115 129);
+  font-weight: 500;
+}
+.htmlContainer p {
+  line-height: 1.625;
+  font-size: 1.125rem;
+  color: rgb(99 115 129);
+  font-weight: 500;
+  margin: 0;
+  margin-bottom: 2.5rem;
+}
+.htmlContainer strong {
+  color: rgb(255 255 255);
+  font-weight: bolder;
+}
+
+.htmlContainer ul {
+  color: rgb(99 115 129);
+  list-style-type: disc;
+  list-style-position: inside;
+  margin-bottom: 2.5rem;
+  margin: 0;
+  padding: 0;
+}
+.htmlContainer li {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}

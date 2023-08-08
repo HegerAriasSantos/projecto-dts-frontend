@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/redux/hooks";
 import { UserSigninRequest } from "@/types";
 import { UserService } from "@/services";
-import { setToken } from "@/redux/features/tokenSlice";
+import { setUserInfo } from "@/redux/features/userInfoSlice";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
@@ -38,14 +38,14 @@ export default function Page() {
         title: "Sign in succesfull!",
         icon: "success",
       }).then(() => {
-        dispatch(setToken(result.jwToken));
+        dispatch(setUserInfo({ token: result.jwToken, id: result.id }));
         push("/");
       });
     }
   };
 
   return (
-    <section className="relative z-10 overflow-hidden pb-16 pt-36 md:pb-20 lg:pb-28 lg:pt-[180px]">
+    <section className="relative z-10 overflow-hidden pb-16 pt-36 md:pb-20 lg:pb-28 ">
       <div className="container">
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4">

@@ -15,21 +15,47 @@ const menuData: Menu[] = [
   },
   {
     id: 3,
-    title: "Teams",
-    path: "/team",
-    newTab: false,
-  },
-  {
-    id: 3,
     title: "Blogs",
-    path: "/blog",
     newTab: false,
+    submenu: [
+      {
+        id: 31,
+        title: "Blogs list",
+        path: "/blog",
+        newTab: false,
+      },
+      {
+        id: 32,
+        title: "Create blog",
+        path: "/blog-create",
+        newTab: false,
+      },
+    ],
   },
   {
     id: 4,
-    title: "Carbon Footprint Calculator (CFC)",
-    path: "/cfc",
-    newTab: true,
+    title: "Resources",
+    newTab: false,
+    submenu: [
+      {
+        id: 41,
+        title: "Resource list",
+        path: "/resource",
+        newTab: false,
+      },
+      {
+        id: 42,
+        title: "Create resource",
+        path: "/resource-create",
+        newTab: false,
+      },
+    ],
   },
+  // {
+  //   id: 5,
+  //   title: "Carbon Footprint Calculator (CFC)",
+  //   path: "/cfc",
+  //   newTab: true,
+  // },
 ];
 export default menuData;
