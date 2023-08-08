@@ -6,4 +6,6 @@ export type UserSignupRequest = {
   password: string;
   confirmPassword: string;
   phone: string;
+  photo?: string;
+  filePhoto?: string;
 };

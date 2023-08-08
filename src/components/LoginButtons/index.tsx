@@ -1,16 +1,17 @@
+import { UserInfoType } from "@/redux/features/userInfoSlice";
 import Link from "next/link";
 import Swal from "sweetalert2";
 
 type Props = {
-  userToken: string;
+  userInfo: UserInfoType;
   isInsideMenu: boolean;
   logout: () => void;
 };
-const LoginButtons = ({ userToken, isInsideMenu, logout }: Props) => {
+const LoginButtons = ({ userInfo, isInsideMenu, logout }: Props) => {
   return (
     <>
       <div className={`flex items-center justify-end`}>
-        {!userToken ? (
+        {!userInfo ? (
           <>
             <Link
               href="/signin"

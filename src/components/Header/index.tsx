@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
 import { useAppSelector, useAppDispatch } from "@/redux/hooks";
-import { clearToken } from "@/redux/features/tokenSlice";
+import { clearUserInfo } from "@/redux/features/userInfoSlice";
 import LoginButtons from "../LoginButtons";
 
 const Header = () => {
@@ -37,10 +37,10 @@ const Header = () => {
       setOpenIndex(index);
     }
   };
-  const userToken = useAppSelector((state) => state.tokenReducer);
+  const userInfo = useAppSelector((state) => state.tokenReducer);
   const dispatch = useAppDispatch();
 
-  const handleLogOut = () => dispatch(clearToken());
+  const handleLogOut = () => dispatch(clearUserInfo());
 
   return (
     <>
@@ -53,24 +53,19 @@ const Header = () => {
       >
         <div className="container">
           <div className="relative -mx-4 flex items-center justify-between">
-            <div className="w-60 max-w-full px-4 xl:mr-12">
-              <Link
-                href="/"
-                className={`header-logo block w-full ${
-                  sticky ? "py-5 lg:py-2" : "py-8"
-                } `}
-              >
+            <div className="w-28 max-w-full px-4 xl:mr-12">
+              <Link href="/" className={`header-logo block w-full`}>
                 <Image
-                  src="/images/logo/logo-2.svg"
+                  src="/images/brandIcons/greenLife_logo.png"
                   alt="logo"
-                  width={140}
+                  width={130}
                   height={30}
                   className="w-full dark:hidden"
                 />
                 <Image
-                  src="/images/logo/logo.svg"
+                  src="/images/brandIcons/greenLife_logo.png"
                   alt="logo"
-                  width={140}
+                  width={130}
                   height={30}
                   className="hidden w-full dark:block"
                 />
@@ -156,7 +151,7 @@ const Header = () => {
                     ))}
                     <li className="block lg:hidden">
                       <LoginButtons
-                        userToken={userToken}
+                        userInfo={userInfo}
                         logout={handleLogOut}
                         isInsideMenu={true}
                       ></LoginButtons>
@@ -166,7 +161,7 @@ const Header = () => {
               </div>
               <div className="flex items-center">
                 <LoginButtons
-                  userToken={userToken}
+                  userInfo={userInfo}
                   logout={handleLogOut}
                   isInsideMenu={false}
                 ></LoginButtons>

@@ -7,10 +7,10 @@ const AboutPage = () => {
     <>
       <Breadcrumb
         pageName="About Page"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero."
+        description="Welcome to GreenLife Where Nature and Community Thrive Together!"
       />
+
       <AboutSectionOne />
-      <AboutSectionTwo />
     </>
   );
 };
