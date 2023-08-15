@@ -50,8 +50,7 @@ const Blog = () => {
                   new Array(allBlogs?.pages).fill("").map((_, index) => {
                     return (
                       <li key={index} className="mx-1">
-                        <a
-                          href="#0"
+                        <button
                           className={`flex h-9 min-w-[36px] cursor-pointer items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-body-color transition ${
                             index !== currentPage &&
                             "hover:bg-primary hover:bg-opacity-100 hover:text-white"
@@ -59,7 +58,7 @@ const Blog = () => {
                           onClick={() => goToPage(index)}
                         >
                           {index + 1}
-                        </a>
+                        </button>
                       </li>
                     );
                   })

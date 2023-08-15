@@ -1,28 +1,34 @@
 "use client";
-import SingleBlog from "@/components/Blog/SingleBlog";
+import { SingleResource } from "@/components";
 import Breadcrumb from "@/components/Common/Breadcrumb";
-import { usePaginatedBlog } from "@/hooks";
+import { usePaginatedResources } from "@/hooks";
 
-const Blog = () => {
-  const { allBlogs, beforePage, blogs, currentPage, nextPage, goToPage } =
-    usePaginatedBlog();
+const Resource = () => {
+  const {
+    allResources,
+    beforePage,
+    resources,
+    currentPage,
+    nextPage,
+    goToPage,
+  } = usePaginatedResources();
 
   return (
     <>
       <Breadcrumb
-        pageName="Blogs"
-        description="Thank you for visiting our Blogs Page, and we hope you enjoy the immersive experience we have created for you. Happy reading!"
+        pageName="Recursos"
+        description="Gracias por visitar nuestra página de recursos, y esperamos que disfrute de la experiencia inmersiva que hemos creado para usted. ¡Feliz lectura!"
       />
 
       <section className="pb-[120px] pt-[120px]">
         <div className="container">
           <div className="-mx-4 flex flex-wrap justify-center">
-            {blogs?.map((blog) => (
+            {resources?.map((blog) => (
               <div
                 key={blog.id}
                 className="w-full px-4 md:w-2/3 lg:w-1/2 xl:w-1/3"
               >
-                <SingleBlog blog={blog} />
+                <SingleResource blog={blog} />
               </div>
             ))}
           </div>
@@ -43,15 +49,14 @@ const Blog = () => {
                       "hover:bg-primary hover:bg-opacity-100 hover:text-white"
                     } `}
                   >
-                    Prev
+                    Anterior
                   </button>
                 </li>
-                {allBlogs?.pages ? (
-                  new Array(allBlogs?.pages).fill("").map((_, index) => {
+                {allResources?.pages ? (
+                  new Array(allResources?.pages).fill("").map((_, index) => {
                     return (
                       <li key={index} className="mx-1">
-                        <a
-                          href="#0"
+                        <div
                           className={`flex h-9 min-w-[36px] cursor-pointer items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-body-color transition ${
                             index !== currentPage &&
                             "hover:bg-primary hover:bg-opacity-100 hover:text-white"
@@ -59,7 +64,7 @@ const Blog = () => {
                           onClick={() => goToPage(index)}
                         >
                           {index + 1}
-                        </a>
+                        </div>
                       </li>
                     );
                   })
@@ -77,14 +82,14 @@ const Blog = () => {
                 <li className="mx-1">
                   <button
                     onClick={() => {
-                      if (currentPage < allBlogs?.pages - 1) nextPage();
+                      if (currentPage < allResources?.pages - 1) nextPage();
                     }}
                     className={`flex h-9 min-w-[36px] cursor-pointer items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-body-color transition ${
-                      currentPage < allBlogs?.pages - 1 &&
+                      currentPage < allResources?.pages - 1 &&
                       "hover:bg-primary hover:bg-opacity-100 hover:text-white"
                     } `}
                   >
-                    Next
+                    Siguiente
                   </button>
                 </li>
               </ul>
@@ -96,4 +101,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default Resource;

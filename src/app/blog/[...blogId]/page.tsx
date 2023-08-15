@@ -152,6 +152,14 @@ const BlogDetailsPage = ({ params }: { params: { blogId: string } }) => {
                         {new Date(blogDetail?.date).toDateString()}
                       </p>
                     </div>
+                    <div className="mb-5">
+                      <a
+                        href="#0"
+                        className="inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white"
+                      >
+                        {blogDetail.categories[0].name}
+                      </a>
+                    </div>
                   </div>
                 </div>
                 <span
@@ -185,16 +193,28 @@ const BlogDetailsPage = ({ params }: { params: { blogId: string } }) => {
                     return (
                       <div
                         key={index}
-                        className="dark:bg-gray-800 mb-4 rounded-lg  p-4 shadow-xl"
+                        className="dark:bg-gray-800 mb-4 rounded-lg border-4 border-solid  border-dark  p-4 shadow-xl"
                       >
                         <div className="mb-2 flex justify-between">
-                          <div>
-                            <h3 className="font-medium text-black dark:text-white ">
-                              {comment.user.name + " " + comment.user.lastName}
-                            </h3>
-                            <p className="text-xs font-medium text-body-color">
-                              {new Date(comment.date).toDateString()}
-                            </p>
+                          <div className="flex">
+                            <div className="mr-4">
+                              <div className="relative h-10 w-10 overflow-hidden rounded-full">
+                                <img
+                                  src={`${config.rootBackend}${comment.user.photo}`}
+                                  alt="author"
+                                />
+                              </div>
+                            </div>
+                            <div>
+                              <h3 className="font-medium text-black dark:text-white ">
+                                {comment.user.name +
+                                  " " +
+                                  comment.user.lastName}
+                              </h3>
+                              <p className="text-xs font-medium text-body-color">
+                                {new Date(comment.date).toDateString()}
+                              </p>
+                            </div>
                           </div>
                           <div className="flex items-center gap-4">
                             <button
@@ -234,15 +254,31 @@ const BlogDetailsPage = ({ params }: { params: { blogId: string } }) => {
                         className="dark:bg-gray-800 mb-4 rounded-lg  p-4 shadow-xl"
                       >
                         <div className="mb-2 flex justify-between">
-                          <div>
-                            <h3 className="font-medium text-black dark:text-white ">
-                              {comment.user.name + " " + comment.user.lastName}
-                            </h3>
-                            <p className="text-xs font-medium text-body-color">
-                              {new Date(comment.date).toDateString()}
-                            </p>
+                          <div className="flex">
+                            <div className="mr-4">
+                              <div className="relative h-10 w-10 overflow-hidden rounded-full">
+                                <img
+                                  src={`${config.rootBackend}${comment.user.photo}`}
+                                  alt="author"
+                                />
+                              </div>
+                            </div>
+                            <div>
+                              <h3 className="font-medium text-black dark:text-white ">
+                                {comment.user.name +
+                                  " " +
+                                  comment.user.lastName}
+                              </h3>
+                              <p className="text-xs font-medium text-body-color">
+                                {new Date(comment.date).toDateString()}
+                              </p>
+                            </div>
                           </div>
-                          <div className="flex items-center gap-4">
+                          <div
+                            className={`flex items-center gap-4 ${
+                              userInfo?.id !== comment.userId && "hidden"
+                            }`}
+                          >
                             <button
                               className="flex h-9 min-w-[36px] cursor-pointer items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-body-color transition hover:bg-primary hover:bg-opacity-100 hover:text-white"
                               onClick={() =>

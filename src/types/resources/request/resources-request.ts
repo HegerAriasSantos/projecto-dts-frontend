@@ -1,12 +1,12 @@
 export type ResourcesRequest = {
-  id: number;
-  title: string;
-  detail: string;
-  imageUrl: string;
-  date: Date;
-  userId: string;
-  fileImagen: string;
-  categories: [
+  Id?: number;
+  Name: string;
+  Detail: string;
+  WebSite?: string;
+  LocationUrl?: string;
+  ImageUrl?: string;
+  FileImagen?: string;
+  Categories?: [
     {
       categoryId: number;
       postId: number;

@@ -68,7 +68,7 @@ const BlogDetailsPage = () => {
     try {
       await blogService.createBlog(formData);
       MySwal.fire({
-        title: "¡Inicio de sesión exitoso!",
+        title: "¡Se ha creado correctamente!",
         icon: "success",
       }).then(() => push("/blog"));
     } catch (error) {

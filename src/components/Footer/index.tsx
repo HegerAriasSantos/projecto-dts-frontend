@@ -29,10 +29,10 @@ const Footer = () => {
                   />
                 </Link>
                 <p className="mb-9 mt-[-140px] text-base font-medium leading-relaxed text-body-color">
-                Únete hoy a nuestra comunidad y forma parte del cambio 
-                positivo que merece nuestro planeta. Juntos, creemos un 
-                futuro más verde, más verde y saludable para las 
-                generaciones venideras. Gracias por formar ¡parte de GreenLife!
+                  Únete hoy a nuestra comunidad y forma parte del cambio
+                  positivo que merece nuestro planeta. Juntos, creemos un futuro
+                  más verde, más verde y saludable para las generaciones
+                  venideras. Gracias por formar ¡parte de GreenLife!
                 </p>
               </div>
             </div>
@@ -72,20 +72,13 @@ const Footer = () => {
                 <ul>
                   <li>
                     <Link
-                      href="/resources"
+                      href="/resource"
                       className="mb-4 inline-block text-base font-medium text-body-color hover:text-primary"
                     >
                       Recursos
                     </Link>
                   </li>
-                  <li>
-                    <Link
-                      href="/tips"
-                      className="mb-4 inline-block text-base font-medium text-body-color hover:text-primary"
-                    >
-                      Tips
-                    </Link>
-                  </li>
+
                   <li>
                     <Link
                       href="/blog"
